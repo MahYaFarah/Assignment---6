@@ -50,5 +50,5 @@ npm start
 
 ## Submission
 
-- Live Link: add the deployed URL here.
+- Live Link: https://assignment-6-kappa-lake.vercel.app/
 - GitHub Repository Link: `https://github.com/MahYaFarah/Assignment---6`
