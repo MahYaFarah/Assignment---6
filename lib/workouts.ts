@@ -14,7 +14,7 @@ export type Workout = {
   instructions: string[];
 };
 
-export const API_URL = "https://api.abcz.workers.dev/api/fitlog";
+export const API_URL = process.env.NEXT_PUBLIC_FITLOG_API_URL ?? "https://api.abcz.workers.dev/api/fitlog";
 const fallbackImage = "/assets/banner.png";
 
 export const fallbackWorkouts: Workout[] = [
