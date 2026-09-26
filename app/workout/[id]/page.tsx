@@ -20,7 +20,10 @@ export default function WorkoutDetailPage() {
     const controller = new AbortController();
     fetch(`${API_URL}/${encodeURIComponent(id)}`, { signal: controller.signal, cache: "no-store" })
       .then((response) => response.ok ? response.json() : Promise.reject(new Error("Not found")))
-      .then((payload) => setWorkout(normalizeResponse(payload)[0] ?? findFallbackWorkout(id)))
+      .then((payload) => {
+        const results = normalizeResponse(payload);
+        setWorkout(results.find((item) => item.id === id) ?? fallbackWorkouts.find((item) => item.id === id) ?? results[0] ?? findFallbackWorkout(id));
+      })
       .catch(() => setWorkout(fallbackWorkouts.find((item) => item.id === id) ?? findFallbackWorkout(id)))
       .finally(() => setLoading(false));
     return () => controller.abort();
